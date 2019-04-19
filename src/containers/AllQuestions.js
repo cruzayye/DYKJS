@@ -7,7 +7,8 @@ export default class AllQuestions extends Component {
   state = {
     q1:'falsey',
     q2:'falsey',
-    score: 10
+    score: 10,
+    disabled: false
   }
 
   handleChange=({ target })=> {
@@ -17,20 +18,26 @@ export default class AllQuestions extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { q1, score } = this.state;
-    if(q1 !== 'false') {
-      this.setState({ score: score - 1 });
-    } 
-      
+    if(q1 !== 'false') this.setState({ score: score - 1 });
+    this.handleClick();
+    
+
   }
+
+  handleClick = () => {
+    this.setState({ disabled: true });
+  }
+
+ 
 
   render() {
     const { q1, q2 } = this.state;
     return (
       <>
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} >
         <Q1 q1State={q1} onChange={this.handleChange}/>
         <Q2 q2State={q2} onChange={this.handleChange}/>
-        <button>DONE</button>
+        <button disabled={this.state.disabled}>DONE</button>
       </form>
       </>
     );
