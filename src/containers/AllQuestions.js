@@ -14,14 +14,47 @@ export default class AllQuestions extends Component {
     this.setState({ [target.name]: target.value });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const { q1, score } = this.state;
-    if(q1 !== 'false') {
-      this.setState({ score: score - 1 });
+  minus1 = () => this.setState({ score: this.state.score - 1 })
+
+  async q1Result() {
+    if(this.state.q1 !== 'false') {
+      this.minus1();
     } 
+  }
+  // q2Result = () => {
+  //   if(this.state.q2 !== 'false') {
+  //     return this.minus1();
+  //   } 
+  // }
+
+  async handleSubmit(e) {
+    var pev = await e.preventDefault();
+    var q1 = await this.q1Result();
+    pev;
+    q1;
+    // this.q2Result();
+    // const { q1, q2 } = this.state;
+    // if(q1 !== 'false') {
+    //   this.minus1();
+    // } 
+    // else if(q2 !== 'false') {
+    //   this.minus1();
+    //   console.log('false');
+    // }
       
   }
+
+  // handleSubmit = e => {
+  //   e.preventDefault();
+  //   const { q1, q2, score } = this.state;
+  //   if(q1 !== 'false') {
+  //     this.setState({ score: score - 1 });
+  //   } if(q2 !== 'false') {
+  //     this.setState({ score: score - 1 });
+
+  //   }
+      
+  // }
 
   render() {
     const { q1, q2 } = this.state;
