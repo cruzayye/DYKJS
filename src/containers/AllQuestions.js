@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Q1 from '../components/questions/Q1';
-import Q2 from '../components/questions/Q2';
+// import Q2 from '../components/questions/Q2';
 
 
 export default class AllQuestions extends Component {
   state = {
     q1:'falsey',
-    q2:'falsey',
     score: 10,
     disabled: false
   }
@@ -15,7 +14,7 @@ export default class AllQuestions extends Component {
     this.setState({ [target.name]: target.value });
   };
 
-  handleSubmit = e => {
+  handleQ1 = e => {
     e.preventDefault();
     const { q1, score } = this.state;
     if(q1 !== 'false') this.setState({ score: score - 1 });
@@ -31,14 +30,14 @@ export default class AllQuestions extends Component {
  
 
   render() {
-    const { q1, q2 } = this.state;
+    const { q1 } = this.state;
     return (
       <>
-      <form onSubmit={this.handleSubmit} >
-        <Q1 q1State={q1} onChange={this.handleChange}/>
-        <Q2 q2State={q2} onChange={this.handleChange}/>
-        <button disabled={this.state.disabled}>DONE</button>
-      </form>
+        <Q1 
+          q1State={q1} 
+          onChange={this.handleChange} 
+          onSubmit={this.handleQ1} 
+          disabled={this.state.disabled}/>
       </>
     );
   }
