@@ -5,30 +5,34 @@ import Q2 from '../components/questions/Q2';
 
 
 
-
+//maybe we should have a nested object for each question and then loop over each one in order to have less dry code.
 export default class AllQuestions extends Component {
   state = {
     q1:'',
     q1disabled: true,
-    q2:'falsey',
-    q2disabled: false,
+    q2:'',
+    q2disabled: true,
     score: 10
   }
-
-  changeQ1= ({ target }) => {
-    this.setState({ q1: target.value });
-    this.setState({ q1disabled: false });
-
-  };
+  //ORIGINAL ONCHANGE
   // handleChange=({ target })=> {
   //   this.setState({ [target.name]: target.value });
 
   // };
+  changeQ1 = ({ target }) => {
+    this.setState({ q1: target.value });
+    this.setState({ q1disabled: false });
+  };
+
+  changeQ2 = ({ target }) => {
+    this.setState({ q2: target.value });
+    this.setState({ q2disabled: false });
+  };
+  
 
   handleQ1 = e => {
     e.preventDefault();
     const { q1, score } = this.state;
- 
     if(q1 !== 'false') this.setState({ score: score - 1 });
     this.setState({ q1disabled: true });
   }
@@ -62,11 +66,11 @@ export default class AllQuestions extends Component {
 
         />
         
-        {/* <Q2 
+        <Q2 
           q2State={q2} 
-          onChange={this.handleChange}
+          onChange={this.changeQ2}
           onSubmit={this.handleQ2}
-          disabled={this.state.q2disabled}/> */}
+          disabled={this.state.q2disabled}/>
       </section>
       </>
     );
