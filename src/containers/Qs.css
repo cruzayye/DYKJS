@@ -1,0 +1,17 @@
+body{
+  margin: 0;
+}
+header{
+  background-color: grey;
+  padding: 3%;
+}
+header h2{
+  margin-top: 0;
+}
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 2%;
+}

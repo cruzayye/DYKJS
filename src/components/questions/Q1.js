@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Q1({ onChange, q1State, onSubmit, disabled }) {
   return (
-    <form onSubmit={onSubmit}>
+    <form name='q1' onSubmit={onSubmit}>
       <h3>
         Javascript is Essentially the same as Java if you really think about it. 
       </h3>
@@ -28,7 +28,7 @@ export default function Q1({ onChange, q1State, onSubmit, disabled }) {
         />
           False
       </label>
-      <button disabled={disabled}>submit</button>
+      <button  disabled={disabled} name='q1'>submit</button>
       {/* <input type='button' name='q1' value='true' onChange={onChange} /> */}
       {/* <input type='text' name='q1' onChange={onChange} value={name} /> */}
     

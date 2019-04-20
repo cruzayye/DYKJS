@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Q2({ onChange, q2State }) {
+export default function Q2({ onChange, q2State, onSubmit, disabled }) {
   return (
-    <section>
+    <form onSubmit={onSubmit}>
       <h3>When working with Github you should Always push to Master</h3>
       <label>
         <input
@@ -25,14 +25,16 @@ export default function Q2({ onChange, q2State }) {
         />
           False
       </label>
-      
-    </section>
+      <button disabled={disabled}>submit</button>
+    </form>
   );
 }
 
 Q2.propTypes = {
   onChange: PropTypes.func.isRequired,
-  q2State: PropTypes.string.isRequired
+  q2State: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired
 };
 
 
